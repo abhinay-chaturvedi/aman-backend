@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 
  const verifyToken=async (req,res,next)=>{
-    console.log("verifytoken");
+    // console.log("verifytoken");
     try{
         const token=req.header('Authorization').split(' ')[1];
         // console.log(token);

@@ -2,7 +2,7 @@
 import users from "../models/user.js"
 import jwt from "jsonwebtoken";
 const isAdmin=async (req,res,next)=>{
-    console.log("inside the isAdmin");
+    // console.log("inside the isAdmin");
     try{
         // console.log("run");
         const token=req.header("Authorization").split(' ')[1];

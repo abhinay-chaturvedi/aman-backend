@@ -34,7 +34,6 @@ console.log(path.resolve(__dirname,'frontend','build',
 'index.html' ))
 
 
-
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     app.listen(process.env.PORT || 3001,()=>{

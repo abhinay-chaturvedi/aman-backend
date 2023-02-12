@@ -17,6 +17,9 @@ const lockSchema=new mongoose.Schema({
     is_Available:{
         type:Boolean,
         default:true,
+    },
+    time:{
+        type:Number
     }
 })
 const locks=mongoose.model('lock',lockSchema);
