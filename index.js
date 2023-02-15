@@ -11,13 +11,14 @@ import userRoute from "./routes/user.js"
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import path from "path";
-
+const hostname="localhost";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 import cors from "cors";
 const app=express();
 dotenv.config();
 // Setting up Middlewares
+
 app.use(bodyParser.json());
 app.use(cors());
 // app.get("/",(req,res)=>{
@@ -42,7 +43,7 @@ app.get('/', function (req, res) {
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_URI).then(()=>{
-    app.listen(process.env.PORT || 3001,()=>{
+    app.listen(process.env.PORT || 3001,hostname,()=>{
         console.log("server is running on port 3001");
     })
 }).catch((e)=>{
