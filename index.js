@@ -20,24 +20,30 @@ dotenv.config();
 // Setting up Middlewares
 app.use(bodyParser.json());
 app.use(cors());
-app.get("/",(req,res)=>{
-    res.send("yes you have created server for aman project");
-})
+// app.get("/",(req,res)=>{
+//     res.send("yes you have created server for aman project");
+// })
 
-app.use("/lock",lockRoute);
-app.use("/",authRoute);
-app.use("/user",userRoute);
+app.use("/api/lock",lockRoute);
+app.use("/api",authRoute);
+app.use("/api/user",userRoute);
 
 
 console.log(__dirname)
 console.log(path.resolve(__dirname,'frontend','build',         
 'index.html' ))
-
+// if(process.env.NODE_ENV=="production"){
+    app.use(express.static('frontend/build'));
+// }
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname,'frontend','build',         
+    'index.html' ));
+  });
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     app.listen(process.env.PORT || 3001,()=>{
-        console.log("server is running on port 3000");
+        console.log("server is running on port 3001");
     })
 }).catch((e)=>{
     console.log(e);
